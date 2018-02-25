@@ -5,6 +5,7 @@ import (
 	"bzojChecker/bzoj"
 	"bzojChecker/email"
 	"time"
+	"log"
 )
 
 var runid map[string]int
@@ -33,6 +34,7 @@ func RegistEvent(onSubmit func(user user.User, submit bzoj.Submit)) {
 			if flag == true {
 				flag = false
 				for _, u := range list {
+					log.Println("检测到 BZOJ 已阵亡！")
 					email.SendMail(u.Email, "BZOJ 爆炸了！", "好了的话我会提醒你。")
 				}
 			}
@@ -41,6 +43,7 @@ func RegistEvent(onSubmit func(user user.User, submit bzoj.Submit)) {
 			if flag == false {
 				flag = true
 				for _, u := range list {
+					log.Println("检测到 BZOJ 已复活！")
 					email.SendMail(u.Email, "BZOJ 好了！", "如果又炸了的话我会提醒你。")
 				}
 			}

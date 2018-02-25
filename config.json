@@ -3,6 +3,7 @@
   "username": "用户名",
   "password": "密码",
   "users": [
-    {"username": "xxxx", "email": "xxx@example.com", "receive": true}
+    {"username": "user1", "email": "user1@example.com", "receive": true},
+    {"username": "user2", "email": "user2@example.com", "receive": true}
   ]
 }

@@ -9,6 +9,7 @@ import (
 	"fmt"
 	"io/ioutil"
 	"strconv"
+	"log"
 )
 
 var config map[string]interface{}
@@ -25,11 +26,11 @@ func loadConfig() error {
 var list []user.User
 
 func onSubmit(user user.User, submit bzoj.Submit) {
-	fmt.Println(submit)
+	log.Println(user.Username + " 提交了 " + strconv.Itoa(submit.Prob) + " 结果: " + submit.Result)
 	for _, u := range list {
-		//if u == user {
-		//	continue
-		//}
+		if u == user {
+			continue
+		}
 		if u.Receive == false {
 			continue
 		}
@@ -65,9 +66,9 @@ func main() {
 	for _, v := range m {
 		t := v.(map[string]interface{})
 		username := t["username"]
-		email := t["email"]
+		mail := t["email"]
 		receive := t["receive"]
-		list = append(list, user.NewUser(username.(string), email.(string), receive.(bool)))
+		list = append(list, user.NewUser(username.(string), mail.(string), receive.(bool)))
 	}
 	fmt.Println("√")
 	fmt.Print("处理用户信息...")

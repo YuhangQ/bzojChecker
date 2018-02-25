@@ -1,37 +1,38 @@
 package email
 
 import (
-	"net/smtp"
+	"gopkg.in/gomail.v2"
+	"log"
 	"strings"
+	"strconv"
 )
 
-func sendToMail(user, password, host, to, subject, body, mailtype string) error {
-	hp := strings.Split(host, ":")
-	auth := smtp.PlainAuth("", user, password, hp[0])
-	var contentType string
-	if mailtype == "html" {
-		contentType = "Content-Type: text/" + mailtype + "; charset=UTF-8"
-	} else {
-		contentType = "Content-Type: text/plain" + "; charset=UTF-8"
-	}
-
-	msg := []byte("To: " + to + "\r\nFrom: " + user + ">\r\nSubject: " + subject + "\r\n" + contentType + "\r\n\r\n" + body)
-	sendTos := strings.Split(to, ";")
-	err := smtp.SendMail(host, auth, user, sendTos, msg)
-	return err
-}
-
-var user string
+var useremail string
 var password string
 var host string
+var port int
 
 func SetConfig(smtphost string, username string, passwd string) {
-	host = smtphost
-	user = username
+	host = strings.Split(smtphost, ":")[0]
+	port, _ = strconv.Atoi(strings.Split(smtphost, ":")[1])
+	useremail = username
 	password = passwd
 }
 
-func SendMail(to string, subject string, contect string) error {
-	err := sendToMail(user, password, host, to, subject, contect, "nohtml")
-	return err
+func SendMail(to string, subject string, content string) {
+	m := gomail.NewMessage()
+
+	m.SetAddressHeader("From", useremail, "bzojChecker")
+	m.SetHeader("To", m.FormatAddress(to, "用户"))
+	m.SetHeader("Subject", subject)
+	m.SetBody("text/plain", content)
+
+	d := gomail.NewDialer(host, port, useremail, password)
+
+	if err := d.DialAndSend(m); err != nil {
+		log.Println("发送失败", err)
+		return
+	}
+
+	log.Println("成功发送给 " + to)
 }
