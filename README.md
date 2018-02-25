@@ -9,7 +9,7 @@
 先 [下载](https://github.com/YuhangQ/bzojChecker/releases) 好对应平台的程序。
 然后配置好 config.json ，就可以直接运行了，不需要其他依赖。
 
-```json
+```
 {
   // 下面三个是邮件服务器的配置
   "smtphost": "地址:端口",
