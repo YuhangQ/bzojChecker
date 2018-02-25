@@ -4,6 +4,8 @@
 
 只要有人提交代码，其他用户就可以接收到消息。
 
+BZOJ 爆炸/好了 会有贴心的提醒。
+
 # 食用方法
 
 先 [下载](https://github.com/YuhangQ/bzojChecker/releases) 好对应平台的程序。
