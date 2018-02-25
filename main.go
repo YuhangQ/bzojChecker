@@ -34,7 +34,7 @@ func onSubmit(user user.User, submit bzoj.Submit) {
 		if u.Receive == false {
 			continue
 		}
-		title := u.Username + " 提交了 " + strconv.Itoa(submit.Prob) + " 结果: " + submit.Result
+		title := user.Username + " 提交了 " + strconv.Itoa(submit.Prob) + " 结果: " + submit.Result
 		content := `提交人: %s
 题目编号: %d
 评测结果: %s
@@ -44,7 +44,7 @@ func onSubmit(user user.User, submit bzoj.Submit) {
 }
 
 func main() {
-	fmt.Println("BZOJ 爬虫程序 v1.1")
+	fmt.Println("BZOJ 爬虫程序 v1.2")
 	fmt.Print("检查网络状态...")
 	if bzoj.Alive() == false {
 		fmt.Println("×\nERROR: 无法连接到 BZOJ.")
