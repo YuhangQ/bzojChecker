@@ -1,0 +1,8 @@
+{
+  "smtphost": "smtp.qq.com:25",
+  "username": "i@yuhangq.me",
+  "password": "cumnxlemdckkbidf",
+  "users": [
+    {"username": "YuhangQ", "email": "i@yuhangq.me", "receive": true}
+  ]
+}
