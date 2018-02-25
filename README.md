@@ -20,7 +20,7 @@ BZOJ 爆炸/好了 会有贴心的提醒。
   
   // 下面是用户的配置，username 是 OJ 用户名，email 是邮箱，receive 表示是否接收邮件。
   "users": [
-    {"username": "xxxx", "email": "xxx@example.com", "receive": true}
+    {"username": "xxxx", "email": "xxx@example.com", "receive": true},
     {"username": "xxxx2", "email": "xxx2@example.com", "receive": true}
   ]
 }
